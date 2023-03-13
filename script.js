@@ -1,7 +1,7 @@
 var start = document.getElementById("start");
 var quiz = document.getElementById("quiz");
-var question = document.getElementById("quiz");
-//var img = document.getElementById("img");
+var question = document.getElementById("question");
+var img = document.getElementById("img");
 var choiceA = document.getElementById("choiceA");
 var choiceB = document.getElementById("choiceB");
 var choiceC = document.getElementById("choiceC");
@@ -77,6 +77,26 @@ let quiestion = [
         choiceD: "JavaScript is a High-level languag",
         correct: "A"
     }
-]
+];
 
+var lastQuestion = questions.Length - 1;
+let runningQuestion = 0;
 
+function renderQuestion(){
+    let q = question[runningQuestion];
+
+    question.innerHTML = "<p>"+q.question +"</p>";
+    qImg.innerHTML = "<img src="+ q.imgSrc +">";
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+    choiceD.innerHTML = q.choiceD;
+}
+
+function renderProgress(){
+    for(let qIndex = 0; qindex <= lastQuestion; qindex++){
+        progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
+    }
+}
+
+start.addEventListener("click",startQuiz);
