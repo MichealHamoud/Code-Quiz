@@ -1,102 +1,84 @@
-var start = document.getElementById("start");
-var quiz = document.getElementById("quiz");
-var question = document.getElementById("question");
-var img = document.getElementById("img");
-var choiceA = document.getElementById("choiceA");
-var choiceB = document.getElementById("choiceB");
-var choiceC = document.getElementById("choiceC");
-var choiceD = document.getElementById("choiceD");
-var counter = document.getElementById("counter");
-var timeGauge = document.getElementById("timeGauge")
-var progress = document.getElementById("progress");
-var scoreContainer = document.getElementById("scoreContainer");
-
-
-let quiestion = [
+var quizData = [
     {
-        question: "Commenly Used Data Types DO NOT include...",
-        choiceA: "strings",
-        choiceB: "booleans",
-        choiceC: "alerts",
-        choiceD: "numbers",
-        correct: "C"
-    },{ 
-        question: "The condition in an if / else statement is enclosed with ________.",
-        choiceA: "quotes",
-        choiceB: "curly brackets",
-        choiceC: "parenthesis",
-        choiceD: "square brackets",
-        correct: "C"
-    },{ 
-        question: "Arrys in JavaScript can be used to store ________.",
-        choiceA: "numbers and strings",
-        choiceB: "other arrys",
-        choiceC: "booleans",
-        choiceD: "all of the above",
-        correct: "D"
-    },{ 
-        question: "String values must be enclosed within ________ when being assigned to variables.",
-        choiceA: "commas",
-        choiceB: "curly brackets",
-        choiceC: "parenthesis",
-        choiceD: "quotes",
-        correct: "D"
-    },{ 
-        question: "A very useful toll used during development and debugging for printing content to the debugger is:",
-        choiceA: "JavaScript",
-        choiceB: "terminal/bash",
-        choiceC: "for loops",
-        choiceD: "console.log",
-        correct: "D"
-    },{ 
-        question: "What does consol.log do?",
-        choiceA: "outputs a message to the web console",
-        choiceB: "makes a button to log a comment",
-        choiceC: "logs information to the browser",
-        choiceD: "all of the above",
-        correct: "A"
-    },{ 
-        question: "What are JavaScript Data Types?.",
-        choiceA: "number",
-        choiceB: "string",
-        choiceC: "boolean",
-        choiceD: "object",
-        correct: "D"
-    },{ 
-        question: "Which symbol is used for comments in Javascript?",
-        choiceA: "//",
-        choiceB: "/*",
-        choiceC: "-",
-        choiceD: "\\",
-        correct: "B"
-    },{ 
-        question: "Which of the following is correct about Javascript?",
-        choiceA: "JavaScript is an Object-Based language",
-        choiceB: "JavaScript is Assembly-language",
-        choiceC: "JavaScript is an Object-Oriented languag",
-        choiceD: "JavaScript is a High-level languag",
-        correct: "A"
-    }
-];
-
-var lastQuestion = questions.Length - 1;
-let runningQuestion = 0;
-
-function renderQuestion(){
-    let q = question[runningQuestion];
-
-    question.innerHTML = "<p>"+q.question +"</p>";
-    qImg.innerHTML = "<img src="+ q.imgSrc +">";
-    choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
-    choiceD.innerHTML = q.choiceD;
+      question: "1. What is JavaScript?",
+      a: "JavaScript is a scripting language used to make the website interactive",
+      b: "JavaScript is an assembly language used to make the website interactive",
+      c: "JavaScript is a compiled language used to make the website interactive",
+      d: "None of the above",
+      correct: "a",
+    },
+    {
+      question: "What does CSS stand for?",
+      a: "Central Style Sheets",
+      b: "Cascading Style Sheets",
+      c: "Cascading Simple Sheets",
+      d: "Cars SUVs Sailboats",
+      correct: "b",
+    },
+    {
+      question: "What does HTML stand for?",
+      a: "Hypertext Markup Language",
+      b: "Hypertext Markdown Language",
+      c: "Hyperloop Machine Language",
+      d: "Helicopters Terminals Motorboats Lamborginis",
+      correct: "a",
+    },
+    {
+      question: "What year was JavaScript launched?",
+      a: "1996",
+      b: "1995",
+      c: "1994",
+      d: "none of the above",
+      correct: "b",
+    },
+  ];
+  
+  var quiz = document.getElementById("quiz");
+  var answerElements = document.querySelectorAll(".answer");
+  var questionElement = document.getElementById("question");
+  var a_text = document.getElementById("a_text");
+  var b_text = document.getElementById("b_text");
+  var c_text = document.getElementById("c_text");
+  var d_text = document.getElementById("d_text");
+  var submitButton = document.getElementById("submit");
+  
+  var currentQuiz = 0;
+  var score = 0;
+  
+  function deselectAnswers() {
+    answerElements.forEach((answer) => (answer.checked = false));
 }
-
-function renderProgress(){
-    for(let qIndex = 0; qindex <= lastQuestion; qindex++){
-        progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
+  
+  function getSelected() {
+    let answer;
+    answerElements.forEach((answerElement) => {
+      if (answerElement.checked) answer = answerElement.id;
+    });
+    return answer;
+  };
+  
+  function loadQuiz () {
+    deselectAnswers();
+    var currentQuizData = quizData[currentQuiz];
+    questionElement.innerText = currentQuizData.question;
+    a_text.innerText = currentQuizData.a;
+    b_text.innerText = currentQuizData.b;
+    c_text.innerText = currentQuizData.c;
+    d_text.innerText = currentQuizData.d;
+  };
+  
+  loadQuiz();
+  
+  submitButton.addEventListener("click", () => {
+    var answer = getSelected();
+    if (answer) {
+      if (answer === quizData[currentQuiz].correct) score++;
+      currentQuiz++;
+      if (currentQuiz < quizData.length) loadQuiz();
+      else {
+        quiz.innerHTML = `
+              <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+              <button onclick="history.go(0)">Play Again</button>`
+      }
     }
-}
-
-start.addEventListener("click",startQuiz);
+  });

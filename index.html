@@ -1,50 +1,40 @@
 <!DOCTYPE html>
-<html>
-     <head>
-        <meta charset="utf-8">
-        <titel>Javascript Quiz Game</titel>
-        <link rel="stylesheet" href="./style.css">
-     </head>
-     <body>
-        <main>
-            <div id="container">
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Quiz App</title>
+  <link rel="stylesheet" href="./style.css">
 
-                <button id="start">Start Quiz!</button>
-        
-                <div id="quiz" style="display: none">
-        
-                    <div id="question"></div>
-        
-                    <div id="Img"></div>
-        
-                    <div id="choices">
-        
-                        <div class="choice" id="A" onclick="checkAnswer('A')"></div>
-        
-                        <div class="choice" id="B" onclick="checkAnswer('B')"></div>
-        
-                        <div class="choice" id="C" onclick="checkAnswer('C')"></div>
+</head>
+<body>
+<div class="quiz-container" id="quiz">
 
-                        <div class="choice" id="D" onclick="checkAnswer('D')"></div>
-        
-                    </div>
-        
-                    <div id="timer">
-        
-                        <div id="counter"></div>
-        
-                        <div id="btimeGauge"></div>
-        
-                        <div id="timeGauge"></div>
-        
-                    </div>
-        
-                    <div id="progress"></div>
-        
-                </div>
-        
-                <div id="scoreContainer" style="display: none"></div>
-        </main>
-        <script src="script.js"></script>
-     </body>
+<div class="quiz-header">
+   <h2 id="question">Question is loading...</h2>
+
+<ul>
+  <li>
+    <input type="radio" name="answer" id="a" class="answer" />
+    <label for="a" id="a_text">Answer...</label>
+  </li>
+  <li>
+    <input type="radio" name="answer" id="b" class="answer" />
+    <label for="b" id="b_text">Answer...</label>
+  </li>
+  <li>
+    <input type="radio" name="answer" id="c" class="answer" />
+    <label for="c" id="c_text">Answer...</label>
+  </li>
+  <li>
+    <input type="radio" name="answer" id="d" class="answer" />
+    <label for="d" id="d_text">Answer...</label>
+  </li>
+</ul>
+</div>
+
+      <button id="submit">Submit</button>
+    </div>
+  <script  src="./script.js"></script>
+
+</body>
 </html>
