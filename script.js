@@ -8,9 +8,9 @@ var quizData = [
       correct: "a",
     },
     {
-      question: "What does CSS stand for?",
-      a: "Central Style Sheets",
-      b: "Cascading Style Sheets",
+      question: "Which of the following is correct about JavaScript?",
+      a: "JavaScript is an Object-Based language",
+      b: "JavaScript is Assembly-language",
       c: "Cascading Simple Sheets",
       d: "Cars SUVs Sailboats",
       correct: "b",
