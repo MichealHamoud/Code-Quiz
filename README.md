@@ -7,7 +7,7 @@ This is a basic quiz where i use HTML, CSS, and Javascript to write up a quiz wh
 
 After you asnwered all 4 questions it should pop up another page where it will give you a score between 0-4 and should ask you to play again.
 
-
+https://michealhamoud.github.io/Code-Quiz/
 
 
 
