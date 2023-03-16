@@ -45,7 +45,7 @@
  
   
   button {
-    background-color: #58007e;
+    background-color: #000000;
     color: #fff;
     border: none;
     display: block;
@@ -62,4 +62,29 @@
   button:focus {
     outline: none;
     background-color: #5e3370;
+  }
+  p {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 145px;
+    height: 45px;
+    background-color: aquamarine;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 0 8px;
+  }
+
+  p ,
+  .safe-Timer-Display{
+    font-size: 18px;
+    font-weight: 500;
+    background-color: rgb(88, 68, 68);
+    height: 30px;
+    width: 60px;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 5px;
+    border: 1px solid #343a40;
   }

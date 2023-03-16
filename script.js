@@ -41,6 +41,7 @@ var quizData = [
   var c_text = document.getElementById("c_text");
   var d_text = document.getElementById("d_text");
   var submitButton = document.getElementById("submit");
+  var name = prompt("Please enter your name.");
   
   var currentQuiz = 0;
   var score = 0;
@@ -67,7 +68,7 @@ var quizData = [
     d_text.innerText = currentQuizData.d;
   };
   
-  loadQuiz();
+    loadQuiz();
   
   submitButton.addEventListener("click", () => {
     var answer = getSelected();
@@ -82,3 +83,27 @@ var quizData = [
       }
     }
   });
+
+  function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = 0;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var time = 60 / 2, // your time in seconds here
+        display = document.querySelector('#safeTimerDisplay');
+    startTimer(time, display);
+};
+
